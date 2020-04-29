@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+.TodoItem {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #4d4d4d;
+}
+
+.TodoItem-complete {
+    text-decoration: line-through;
+    opacity: .3;
+}
