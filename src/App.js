@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TodoItem from './components/TodoItem';
 
@@ -8,7 +7,7 @@ class App extends Component {
     super();
     this.todoItems = [
       { title: 'Buy snacks', isComplete: true},
-      { title: 'Go shopping', isComplete: true},
+      { title: 'Go shopping'},
       { title: 'Go home'}
     ];
   }
@@ -16,8 +15,11 @@ class App extends Component {
     return (
       <div className="App">
         {
-          this.todoItems.map((item, index) => 
+          this.todoItems.length > 0 && this.todoItems.map((item, index) => 
           <TodoItem key={index} item={ item } />)
+        }
+        {
+          this.todoItems.length === 0 && 'Nothing here.'
         }
       </div>
     );
