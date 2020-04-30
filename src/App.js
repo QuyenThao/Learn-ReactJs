@@ -1,26 +1,43 @@
 import React, { Component } from 'react';
 import './App.css';
-import TodoItem from './components/TodoItem';
+import TodoItem from './components/Todo-list/TodoItem';
+import TrafficLight from './components/traffic-light/TrafficLight';
 
+const RED = 0;
+const ORANGE = 1;
+const GREEN = 2;
 class App extends Component {
   constructor() {
     super();
-    this.todoItems = [
-      { title: 'Buy snacks', isComplete: true},
-      { title: 'Go shopping'},
-      { title: 'Go home'}
-    ];
+    this.state = {
+        currentColor: GREEN
+    };
+    console.log(this.currentColor);
+
+    setInterval(() => {
+        this.setState({
+            currentColor: this.getNextColor(this.state.currentColor)
+        })
+    }, 2000);
   }
+
+  getNextColor(color) {
+    switch(color) {
+        case RED:
+            return ORANGE;
+        case ORANGE:
+            return GREEN;
+        default:
+            return RED;
+    }
+}
+
   render() {
+    const { currentColor } = this.state;
+
     return (
       <div className="App">
-        {
-          this.todoItems.length > 0 && this.todoItems.map((item, index) => 
-          <TodoItem key={index} item={ item } />)
-        }
-        {
-          this.todoItems.length === 0 && 'Nothing here.'
-        }
+        <TrafficLight currentColor={currentColor} />
       </div>
     );
   }
